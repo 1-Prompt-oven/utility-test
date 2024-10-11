@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.crypto.SecretKey;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Log4j2
@@ -20,8 +18,8 @@ public class EncrypterTest {
     void testMakeKey() {
         try {
             System.out.print("this is key: ");
-            SecretKey generated = encrypter.generateKey();
-            System.out.println(generated.getEncoded());
+            String generated = encrypter.generateKey();
+            System.out.println(generated);
         } catch (Exception e) {}
     }
 
