@@ -1,3 +1,6 @@
 spring:
   application:
     name: utility-test
+
+encrypter:
+  secret-key: [B@13250132
