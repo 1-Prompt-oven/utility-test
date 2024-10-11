@@ -40,7 +40,7 @@ public class Encrypter {
         return new String(decryptedData);
     }
 
-    // 암호화 키를 생성하는 메서드입니다. 백업용이에요
+    // 암호화 키를 생성하는 메서드입니다. 백업용 겸 설정파일 내용 업데이트 위한 값 생성 용이에요
     public String generateKey() throws Exception {
         KeyGenerator keyGen = KeyGenerator.getInstance(ALGO);
         keyGen.init(256); // AES-256 암호화 호출할 거에요
