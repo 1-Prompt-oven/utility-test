@@ -7,14 +7,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.crypto.SecretKey;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Log4j2
 @SpringBootTest
 public class EncrypterTest {
 
     @Autowired
-    private static Encrypter encrypter;
+    private Encrypter encrypter;
 
     @Test
     void testMakeKey() {
@@ -29,7 +29,7 @@ public class EncrypterTest {
     void testEncrypt() {
         String plainText = "Hello World";
         try{
-            String encrypted = encrypter.encrypt(plainText,encrypter.generateKey());
+            String encrypted = encrypter.encrypt(plainText);
             System.out.println(encrypted);
         } catch (Exception e){}
     }
@@ -38,13 +38,13 @@ public class EncrypterTest {
     void testDecrypt() {
         String plainText = "Hello World";
         try {
-            SecretKey Key = encrypter.generateKey();
-            String encrypted = encrypter.encrypt(plainText,Key);
+            String encrypted = encrypter.encrypt(plainText);
             System.out.println(encrypted);
-            String decoded = encrypter.decrypt(encrypted,Key);
+            String decoded = encrypter.decrypt(encrypted);
             System.out.println(decoded);
-            boolean passed = plainText.equals(decoded);
-        } catch (Exception e) {}
+            assertEquals(plainText, decoded);
+        } catch (IllegalArgumentException e) {throw e;}
+        catch (Exception e) {}
     }
 
 }

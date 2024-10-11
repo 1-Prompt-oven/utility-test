@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
@@ -37,5 +38,12 @@ public class Encrypter {
         byte[] decoded = Base64.getDecoder().decode(encryptedData);
         byte[] decryptedData = cipher.doFinal(decoded);
         return new String(decryptedData);
+    }
+
+    // 암호화 키를 생성하는 메서드입니다. 백업용이에요
+    public SecretKey generateKey() throws Exception{
+        KeyGenerator keyGen = KeyGenerator.getInstance(ALGO);
+        keyGen.init(256); // AES-256 암호화 호출할 거에요
+        return keyGen.generateKey();
     }
 }
