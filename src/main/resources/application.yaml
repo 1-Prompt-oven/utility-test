@@ -3,4 +3,6 @@ spring:
     name: utility-test
 
 encrypter:
+  # generatekey 로 만든 거 인코딩 한거고
+  # 필요하면 다시 생성해서 쓰시면 됩니다.
   secret-key: [B@13250132

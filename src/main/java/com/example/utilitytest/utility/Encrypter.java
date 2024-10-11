@@ -44,6 +44,13 @@ public class Encrypter {
     public SecretKey generateKey() throws Exception{
         KeyGenerator keyGen = KeyGenerator.getInstance(ALGO);
         keyGen.init(256); // AES-256 암호화 호출할 거에요
-        return keyGen.generateKey();
+        SecretKey generatedKey = keyGen.generateKey();
+        printKey(generatedKey);
+        return generatedKey;
+    }
+
+    // 생성한 암호화 키를 콘솔(터미널)에 출력하는 메서드입니다. 암호화 키 생성 메서드에서 자동 호출 되어요.
+    private void printKey(SecretKey generatedKey) throws Exception {
+        System.out.println(generatedKey.getEncoded());
     }
 }
