@@ -198,5 +198,19 @@ public class JwtProvider {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public Date getTokenExpiration(String recievedToken) {
+		try {
+			EncryptedJWT targetToken = decryptToken(parseToken(recievedToken));
+			JWTClaimsSet claimsSet = targetToken.getJWTClaimsSet();
+			if (validateToken(claimsSet)) {
+				return claimsSet.getExpirationTime();
+			} else {
+				throw new RuntimeException("token expired");
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
 
