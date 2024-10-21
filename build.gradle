@@ -28,6 +28,9 @@ dependencies {
     // 테스트 코드에도 lombok 적용
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor'org.projectlombok:lombok'
+
+    // nimbus-jose-jwt : this jwt library included in spring-security-oauth2-authorization-server
+    implementation 'com.nimbusds:nimbus-jose-jwt:9.39.3'
 }
 
 tasks.named('test') {
